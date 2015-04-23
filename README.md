@@ -134,9 +134,17 @@ expression.
 
 ## built in functions
 
-You can also split any string you have:
+We're already seen `rand()`. These are also fun:
 
-    split($1, result, "/")
+length($0)
+
+index(haystack, needle)
+
+substr($0, 10)
+
+gsub(/:/, ".")
+
+split($1, result, "/")
 
 
 ## Regular expression as operator
