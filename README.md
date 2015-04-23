@@ -78,6 +78,11 @@ Note that the last example uses floating point numbers. In awk,
 all numbers are floating point, with care taken to print
 integers exactly. Just like JavaScript.
 
+There is a bug in the last example (kind of). Can you spot it?
+(it's that `rand()` returns the same sequence each time unless
+srand() is used; even when using srand there's probably not enough
+entropy. Short version: Do not expect high quality random numbers).
+
 ## Variables
 
 Useful for storing and summing and stuff:
