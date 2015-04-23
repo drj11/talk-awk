@@ -104,6 +104,31 @@ it's a bit hard to type):
 
     awk -F$(printf '\037') '$1 == 85' Scales.txt
 
+## loops
+
+separate file so that it is one word per line:
+
+    awk '{for(i=1; i<=NF; ++i) {
+      print $i
+    }'
+
+Of note:
+
+3-part loop syntax borrowed from C. from 1979 to
+2005-12-13 this will have been familiar to every programmer.
+Now it just looks weird.
+
+NF is a magic variable that holds the number of fields in
+the current record.
+
+$i is the i'th field. You can use variables with `$` and in
+fact, `$` is just a (high precedence) operator that takes any
+expression.
+
+
+
+## built in functions
+
 You can also split any string you have:
 
     split($1, result, "/")
@@ -111,11 +136,7 @@ You can also split any string you have:
 
 ## Regular expression as operator
 
-## if, for
-
-## associative arrays
-
-## built in functions
+## if
 
 ## user defined functions
 
