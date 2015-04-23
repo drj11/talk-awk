@@ -147,9 +147,16 @@ gsub(/:/, ".")
 split($1, result, "/")
 
 
-## Regular expression as operator
+## More fun stuff
 
-## if
+    if($1 ~ /drj/) { stuff }
+
+    print $(NF-1)
+
+    $2 = "blank"
+
+    a[$1] += 1
+
 
 ## user defined functions
 
