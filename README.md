@@ -104,6 +104,10 @@ it's a bit hard to type):
 
     awk -F$(printf '\037') '$1 == 85' Scales.txt
 
+You can also split any string you have:
+
+    split($1, result, "/")
+
 
 ## Regular expression as operator
 
