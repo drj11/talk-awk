@@ -1,15 +1,15 @@
 # A brief introduction to awk
 
-AWK is a programmable text processing tool. The awk program comes as
+AWK is a programmable text processing tool. The `awk` program comes as
 standard with Unix, since 1979 ish, and has been in all major Unix
 standards. Named after its creators: Aho, Weinberger, Kernighan.
-Grows on the grep and sed tools.
+Grows on the `grep` and `sed` tools.
 
 Invoking awk:
 
     awk prog file1 ...
 
-awk processes its input as a series of *records*. Usually, each
+`awk` processes its input as a series of *records*. Usually, each
 record from the input is terminated by a newline.
 
 An AWK program consists of a series of *pattern* *action*
@@ -19,7 +19,7 @@ statements:
 
 ## The builtin loop
 
-When it runs the program, awk steps through its input one record
+When it runs the program, `awk` steps through its input one record
 at a time, and cycles through the pattern/action statements. The
 pattern is matched against the currect record, and if it
 matches, the corresponding action is executed.
@@ -29,11 +29,12 @@ and in this case the action can be left out. Pattern, no action:
 
     /pattern/
 
-Prints every record that matches /pattern/ (so this is a bit like grep).
+Prints every record that matches `/pattern/` (so this is a bit like
+`grep`).
 
 ## Fields
 
-There are a variety of builtin variables and operators.  awk splits
+There are a variety of builtin variables and operators.  `awk` splits
 each record into a number of *fields*, accessible with `$1`, `$2`,
 and so on. `$0` is the entire record. It's quite often useful to
 miss the pattern out (in which case it matches on every line):
@@ -44,9 +45,9 @@ this prints the second field on every line.
 
 ## Quote from shell
 
-awk programs often contain characters that are special to the
+`awk` programs often contain characters that are special to the
 shell, such as space, double quote, and dollar, and they need
-protecting from the shell when you put the awk program on the
+protecting from the shell when you put the `awk` program on the
 command line. Single quotes come in handy:
 
     awk '{ print $2 }' infile
@@ -58,11 +59,10 @@ option:
 
 ## Numbers
 
-awk has numbers and numeric expressions. In a pattern a numeric
+`awk` has numbers and numeric expressions. In a pattern a numeric
 expression that evaluates to 0 does not match, and any other
 value matches. `NR` is a special variable that stores the
 number of records processed so far (including the current one);
-`NF` stores the number of fields in the current record.
 
     awk 'NR > 1' infile
 
@@ -74,13 +74,13 @@ prints all the lines after the first one.
 
     rand() < 0.01  # print a random 1% of all lines
 
-Note that the last example uses floating point numbers. In awk,
+Note that the last example uses floating point numbers. In `awk`,
 all numbers are floating point, with care taken to print
 integers exactly. Just like JavaScript.
 
 There is a bug in the last example (kind of). Can you spot it?
 (it's that `rand()` returns the same sequence each time unless
-srand() is used; even when using srand there's probably not enough
+`srand()` is used; even when using `srand` there's probably not enough
 entropy. Short version: Do not expect high quality random numbers).
 
 ## Variables
@@ -89,8 +89,8 @@ Useful for storing and summing and stuff:
 
     { s += $5 }
 
-If you run this awk program, it won't be very useful. You need
-to print `s` after the entire input has been read. awk has a
+If you run this `awk` program, it won't be very useful. You need
+to print `s` after the entire input has been read. `awk` has a
 special pattern, `END`, that matches only after the last record
 has been processed:
 
@@ -119,14 +119,14 @@ separate file so that it is one word per line:
 
 Of note:
 
-3-part loop syntax borrowed from C. from 1979 to
+3-part loop syntax borrowed from C. From 1979 to
 2005-12-13 this will have been familiar to every programmer.
 Now it just looks weird.
 
-NF is a magic variable that holds the number of fields in
+`NF` is a magic variable that holds the number of fields in
 the current record.
 
-$i is the i'th field. You can use variables with `$` and in
+`$i` is the i'th field. You can use variables with `$` and in
 fact, `$` is just a (high precedence) operator that takes any
 expression.
 
@@ -136,15 +136,15 @@ expression.
 
 We're already seen `rand()`. These are also fun:
 
-length($0)
+    length($0)
 
-index(haystack, needle)
+    index(haystack, needle)
 
-substr($0, 10)
+    substr($0, 10)
 
-gsub(/:/, ".")
+    gsub(/:/, ".")
 
-split($1, result, "/")
+    split($1, result, "/")
 
 
 ## More fun stuff
