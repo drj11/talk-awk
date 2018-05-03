@@ -21,7 +21,7 @@ statements:
 
 When it runs the program, `awk` steps through its input one record
 at a time, and cycles through the pattern/action statements. The
-pattern is matched against the currect record, and if it
+pattern is matched against the current record, and if it
 matches, the corresponding action is executed.
 
 The simplest action is `print` which prints the current record,
